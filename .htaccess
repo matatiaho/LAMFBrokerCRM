@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^crm\.lamfbroker\.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www\.crm\.lamfbroker\.com$
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]

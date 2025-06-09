@@ -14,8 +14,17 @@ git remote set-url origin git@github.com:matatiaho/LAMFBrokerCRM.git
 Ensure the server has an SSH key registered with GitHub and that host verification is set up so `git pull` can run without prompts.
 
 ## Web Root
-The `public/` directory contains the site files. Currently it holds a simple `index.php` placeholder. Replace it with your CRM or other application code. The deployment script does not overwrite database or configuration files—only the tracked files in the repository.
 
+The `public/` directory holds your site code. Hostinger does not allow changing the document root, so add the following `.htaccess` in the repo root to redirect traffic there:
+
+```
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^crm\.lamfbroker\.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www\.crm\.lamfbroker\.com$
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]
+
+```
 ## Best Practices
 - Keep the webhook secret secure and rotate it if compromised.
 - Add logs like `deploy_log.txt` to `.gitignore` (already included).
