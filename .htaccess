@@ -1,3 +1,7 @@
+<FilesMatch "\.(php4|php5|php3|php2|php|phtml)$">
+SetHandler application/x-lsphp82
+</FilesMatch>
+
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^crm\.lamfbroker\.com$ [NC,OR]
 RewriteCond %{HTTP_HOST} ^www\.crm\.lamfbroker\.com$
