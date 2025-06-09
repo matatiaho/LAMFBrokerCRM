@@ -16,7 +16,9 @@ if (!hash_equals($calculated_sig, $sig_header)) {
 }
 
 chdir($repoPath);
-exec('git pull 2>&1', $output);
+// Ensure HTTPS remote to avoid SSH host key issues
+exec('git pull https://github.com/matatiaho/LAMFBrokerCRM.git 2>&1', $output);
+
 file_put_contents($logFile, implode("\n", $output) . "\n", FILE_APPEND);
 echo implode("\n", $output);
 ?>
