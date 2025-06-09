@@ -29,4 +29,3 @@ RewriteRule (.*) /public/$1 [L]
 - Keep the webhook secret secure and rotate it if compromised.
 - Add logs like `deploy_log.txt` to `.gitignore` (already included).
 - Use a separate branch for development and merge into `main` when ready to deploy.
-
